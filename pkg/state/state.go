@@ -3486,6 +3486,10 @@ func (st *HelmState) getOCIChart(release *ReleaseSpec, tempDir string, helm helm
 		if repo.CertFile != "" && repo.KeyFile != "" {
 			flags = append(flags, "--cert-file", repo.CertFile, "--key-file", repo.KeyFile)
 		}
+
+		if repo.SkipTLSVerify {
+			flags = append(flags, "--insecure-skip-tls-verify")
+		}
 	}
 
 	err := helm.ChartPull(qualifiedChartName, chartPath, flags...)
