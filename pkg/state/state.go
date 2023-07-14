@@ -3496,7 +3496,7 @@ func (st *HelmState) getOCIChart(release *ReleaseSpec, tempDir string, helm helm
 	if err != nil {
 		return nil, err
 	}
-	err = helm.ChartExport(qualifiedChartName, chartPath, flags...)
+	err = helm.ChartExport(qualifiedChartName, chartPath)
 	if err != nil {
 		return nil, err
 	}
